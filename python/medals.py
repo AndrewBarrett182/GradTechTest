@@ -19,11 +19,14 @@ medalResults = [
 
 def createMedalTable(results):
 
-    scores = {}
+    scores = {} # Initial empty dictionary
 
+    # Only the podiums are needed to count medals/points therefore the "sport" sections in the dictionary can be ignored
     for i in results:
         for j in i["podium"]:
-            medal = j.split(".")
+            medal = j.split(".") # Split each element of the podium list from the fullstop so we have a number and the country
+            # Check if the country has been added to the dictionary or not and append with the allocated points mentioned:
+            # 1st place = 3 points, 2nd place = 2 points, 3rd place = 1 point
             if medal[1] not in scores:
                 if int(medal[0]) == 1:
                     scores[medal[1]] = 3
